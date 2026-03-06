@@ -5,6 +5,16 @@ import Link from "next/link";
 const FREE_LIMIT = 3;
 const KEY = "claim_count";
 
+async function startCheckout(plan: string) {
+  const res = await fetch("/api/stripe/checkout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ plan }),
+  });
+  const { url } = await res.json();
+  if (url) window.location.href = url;
+}
+
 function Paywall({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
@@ -13,8 +23,8 @@ function Paywall({ onClose }: { onClose: () => void }) {
         <h2 className="text-lg font-bold mb-2">無料枠を使い切りました</h2>
         <p className="text-sm text-gray-500 mb-5">引き続きご利用いただくには有料プランをご選択ください</p>
         <div className="space-y-3 mb-4">
-          <a href="https://gumroad.com/l/REPLACE" target="_blank" rel="noopener noreferrer" className="block bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700">スタンダード ¥4,980/月</a>
-          <a href="https://gumroad.com/l/REPLACE" target="_blank" rel="noopener noreferrer" className="block bg-gray-100 text-gray-700 py-3 rounded-xl hover:bg-gray-200 text-sm">ビジネス ¥9,800/月（無制限）</a>
+          <button onClick={() => startCheckout("standard")} className="block w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700">スタンダード ¥4,980/月</button>
+          <button onClick={() => startCheckout("business")} className="block w-full bg-gray-100 text-gray-700 py-3 rounded-xl hover:bg-gray-200 text-sm">ビジネス ¥9,800/月（無制限）</button>
         </div>
         <button onClick={onClose} className="text-xs text-gray-400 hover:text-gray-600">閉じる</button>
       </div>
