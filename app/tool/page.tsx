@@ -89,11 +89,11 @@ function ResultTabs({ parsed }: { parsed: ParsedResult }) {
   const section = parsed.sections[activeTab];
 
   const handlePrint = () => {
-    const w = window.open("", "_blank");
-    if (!w) return;
-    w.document.write(`<html><head><title>クレーム対応文</title><style>body{font-family:sans-serif;padding:32px;line-height:1.8;white-space:pre-wrap;}</style></head><body>${parsed.raw.replace(/</g, "&lt;")}</body></html>`);
-    w.document.close();
-    w.print();
+    const html = `<html><head><title>クレーム対応文</title><style>body{font-family:sans-serif;padding:32px;line-height:1.8;white-space:pre-wrap;}</style></head><body>${parsed.raw.replace(/</g, "&lt;")}</body></html>`;
+    const blob = new Blob([html], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const w = window.open(url, "_blank");
+    w?.addEventListener("load", () => { w.print(); URL.revokeObjectURL(url); });
   };
 
   return (
