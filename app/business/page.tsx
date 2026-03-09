@@ -95,9 +95,9 @@ export default function BusinessLP() {
           <Link href="/tool" className="inline-block bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-100">
             無料で3回試す →
           </Link>
-          <a href="mailto:contact@example.com" className="inline-block bg-gray-100 text-gray-700 font-bold text-lg px-8 py-4 rounded-xl hover:bg-gray-200">
+          <Link href="/contact" className="inline-block bg-gray-100 text-gray-700 font-bold text-lg px-8 py-4 rounded-xl hover:bg-gray-200">
             法人見積もりを依頼
-          </a>
+          </Link>
         </div>
         <p className="text-xs text-gray-400 mt-4">クレジットカード不要・登録不要で試せます</p>
       </section>
@@ -194,7 +194,7 @@ export default function BusinessLP() {
                     </li>
                   ))}
                 </ul>
-                <Link href={plan.cta === "お問い合わせ" ? "mailto:contact@example.com" : "/tool"}
+                <Link href={plan.cta === "お問い合わせ" ? "/contact" : "/tool"}
                   className={`block w-full text-center text-sm font-bold py-3 rounded-xl ${plan.highlight ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
                   {plan.cta}
                 </Link>
@@ -232,9 +232,9 @@ export default function BusinessLP() {
           <Link href="/tool" className="inline-block bg-white text-blue-600 font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-50 shadow-lg">
             無料で試す →
           </Link>
-          <a href="mailto:contact@example.com" className="inline-block bg-blue-500 text-white font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-400">
+          <Link href="/contact" className="inline-block bg-blue-500 text-white font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-400">
             法人見積もりを依頼
-          </a>
+          </Link>
         </div>
       </section>
 
