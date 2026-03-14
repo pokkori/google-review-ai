@@ -12,6 +12,23 @@ function getClient(): Anthropic {
 const FREE_LIMIT = 3;
 const COOKIE_KEY = "review_use_count";
 const APP_ID = "google-review";
+const PAYJP_API = "https://api.pay.jp/v1";
+
+function payjpAuth() {
+  return "Basic " + Buffer.from(process.env.PAYJP_SECRET_KEY! + ":").toString("base64");
+}
+
+async function checkSubActive(subId: string): Promise<boolean> {
+  try {
+    const res = await fetch(`${PAYJP_API}/subscriptions/${subId}`, {
+      headers: { Authorization: payjpAuth() },
+    });
+    const data = await res.json();
+    return data.status === "active" || data.status === "trial";
+  } catch {
+    return false;
+  }
+}
 
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
 function checkRateLimit(ip: string): boolean {
@@ -36,7 +53,10 @@ export async function POST(req: NextRequest) {
     } catch { isPremium = false; }
   } else {
     const pv = req.cookies.get("premium")?.value;
-    isPremium = pv === "1" || pv === "biz";
+    if (pv === "1" || pv === "biz") {
+      const subId = req.cookies.get("payjp_sub_id")?.value;
+      isPremium = subId ? await checkSubActive(subId) : false;
+    }
   }
   const cookieCount = parseInt(req.cookies.get(COOKIE_KEY)?.value || "0");
   if (!isPremium && cookieCount >= FREE_LIMIT) {
