@@ -231,8 +231,8 @@ export default function BusinessLP() {
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <span className="font-bold text-gray-900">AIクレーム対応文 <span className="text-blue-600 text-sm font-medium ml-2">法人向け</span></span>
           <div className="flex gap-3">
-            <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">個人向けはこちら</Link>
-            <Link href="/tool" className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700">無料で試す</Link>
+            <Link href="/" aria-label="個人向けGoogle口コミ返信AIトップページへ" className="text-sm text-gray-500 hover:text-gray-700">個人向けはこちら</Link>
+            <Link href="/tool" aria-label="Google口コミ返信AIツールを無料で試す" className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700">無料で試す</Link>
           </div>
         </div>
       </nav>
@@ -255,10 +255,10 @@ export default function BusinessLP() {
           ベテランも新人も同じ品質で対応できる。<br />AIがメール文・電話スクリプト・チェックリストをセットで30秒生成。
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/tool" className="inline-block bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-100">
+          <Link href="/tool" aria-label="スタンダードプラン月4,980円で1ヶ月お試しを始める" className="inline-block bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-100">
             まず1ヶ月お試し ¥4,980 →
           </Link>
-          <Link href="/contact" className="inline-block bg-gray-100 text-gray-700 font-bold text-lg px-8 py-4 rounded-xl hover:bg-gray-200">
+          <Link href="/contact" aria-label="法人向けGoogle口コミ返信AI見積もりを依頼する" className="inline-block bg-gray-100 text-gray-700 font-bold text-lg px-8 py-4 rounded-xl hover:bg-gray-200">
             法人見積もりを依頼
           </Link>
         </div>
