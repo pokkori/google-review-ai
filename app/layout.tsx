@@ -6,18 +6,20 @@ import "./globals.css";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-const SITE_URL = "https://claim-ai-beryl.vercel.app";
-const TITLE = "AIクレーム対応文ジェネレーター｜30秒でプロ品質の対応文を自動生成";
-const DESC = "クレーム内容を入力するだけ。お詫び文・原因説明・再発防止策をAIが自動構成。飲食・EC・小売・ホテルなど業種別対応。メール文＋電話スクリプト＋チェックリスト付き。無料3回。";
+const SITE_URL = "https://google-review-ai.vercel.app";
+const TITLE = "Google口コミ返信AI｜30秒でプロ品質の返信文を自動生成";
+const DESC = "Google口コミにAIが最適な返信文を自動生成。低評価・高評価・中評価に対応。飲食・美容・クリニック・ホテルなど業種別対応。SEOアドバイス付き・無料3回。";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
+  keywords: ["Google口コミ返信", "口コミ対応", "AI返信文", "Googleビジネスプロフィール", "口コミ自動生成"],
   openGraph: {
     title: TITLE,
     description: DESC,
     url: SITE_URL,
-    siteName: "AIクレーム対応文ジェネレーター",
+    siteName: "Google口コミ返信AI",
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
     locale: "ja_JP",
     type: "website",
   },
@@ -25,6 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESC,
+    images: [`${SITE_URL}/og-image.png`],
   },
   metadataBase: new URL(SITE_URL),
 };
