@@ -46,7 +46,7 @@ function Paywall({ onClose, onCheckout }: { onClose: () => void; onCheckout?: (p
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
       <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl text-center relative">
-        <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">×</button>
+        <button onClick={onClose} aria-label="ペイウォールを閉じる" className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">×</button>
         <div className="text-3xl mb-3">⭐</div>
         <h2 className="text-lg font-bold mb-2">無料枠を使い切りました</h2>
         <p className="text-sm text-gray-500 mb-1">口コミ返信を無制限に自動生成</p>
@@ -57,14 +57,14 @@ function Paywall({ onClose, onCheckout }: { onClose: () => void; onCheckout?: (p
           <li>✓ 返信履歴を無制限保存</li>
         </ul>
         <div className="space-y-3 mb-4">
-          <button onClick={() => { onClose(); onCheckout?.("standard"); }} className="block w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700">
+          <button onClick={() => { onClose(); onCheckout?.("standard"); }} aria-label="スタンダードプラン月2,980円に申し込む" className="block w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700">
             スタンダード ¥2,980/月（50件/月）
           </button>
-          <button onClick={() => { onClose(); onCheckout?.("business"); }} className="block w-full bg-gray-100 text-gray-700 py-3 rounded-xl hover:bg-gray-200 text-sm">
+          <button onClick={() => { onClose(); onCheckout?.("business"); }} aria-label="ビジネスプラン月4,980円に申し込む" className="block w-full bg-gray-100 text-gray-700 py-3 rounded-xl hover:bg-gray-200 text-sm">
             ビジネス ¥4,980/月（無制限）
           </button>
         </div>
-        <button onClick={onClose} className="text-xs text-gray-400 hover:text-gray-600">閉じる</button>
+        <button onClick={onClose} aria-label="ペイウォールを閉じる" className="text-xs text-gray-400 hover:text-gray-600">閉じる</button>
       </div>
     </div>
   );
@@ -78,7 +78,7 @@ function CopyButton({ text, label = "コピー" }: { text: string; label?: strin
     setTimeout(() => setCopied(false), 2000);
   };
   return (
-    <button onClick={handleCopy} className="text-xs px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium transition-colors">
+    <button onClick={handleCopy} aria-label={`${label}をクリップボードにコピーする`} className="text-xs px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium transition-colors">
       {copied ? "コピー済み ✓" : label}
     </button>
   );
@@ -101,6 +101,8 @@ function ResultTabs({ parsed }: { parsed: ParsedResult }) {
       <div className="flex gap-1 flex-wrap">
         {parsed.sections.map((s, i) => (
           <button key={i} onClick={() => setActiveTab(i)}
+            aria-label={`${s.title}タブを表示する`}
+            aria-pressed={activeTab === i}
             className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${activeTab === i ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
             <span>{s.icon}</span>
             <span>{s.title}</span>
@@ -118,7 +120,7 @@ function ResultTabs({ parsed }: { parsed: ParsedResult }) {
 
       <div className="flex gap-2 justify-end">
         <CopyButton text={parsed.raw} label="全文コピー" />
-        <button onClick={handlePrint} className="text-xs px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium">
+        <button onClick={handlePrint} aria-label="生成結果を印刷またはPDFとして保存する" className="text-xs px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium">
           印刷・PDF保存
         </button>
       </div>
@@ -153,6 +155,7 @@ export default function ReviewTool() {
     e.preventDefault();
     if (isLimit) { setShowPaywall(true); return; }
     setLoading(true); setParsed(null); setError("");
+    let fullText = "";
     try {
       const res = await fetch("/api/generate", {
         method: "POST",
@@ -160,15 +163,44 @@ export default function ReviewTool() {
         body: JSON.stringify({ industry, rating, reviewContent, tone }),
       });
       if (res.status === 429) { setShowPaywall(true); setLoading(false); return; }
-      const data = await res.json();
-      if (!res.ok) { setError(data.error || "エラーが発生しました"); setLoading(false); return; }
-      const newCount = data.count ?? count + 1;
-      localStorage.setItem(KEY, String(newCount));
-      setCount(newCount);
-      const text = data.result || "";
-      const p = parseResult(text);
-      setParsed(p);
-      const newItem: HistoryItem = { date: new Date().toLocaleDateString("ja-JP"), industry: industry || "一般", rating, result: text };
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error || "エラーが発生しました"); setLoading(false); return;
+      }
+      // Streaming 受信
+      const reader = res.body?.getReader();
+      if (!reader) { setError("ストリームを取得できませんでした"); setLoading(false); return; }
+      const decoder = new TextDecoder();
+      let newCount = count + 1;
+      let buffer = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          const payload = line.slice(6).trim();
+          if (payload === "[DONE]") continue;
+          try {
+            const json = JSON.parse(payload);
+            if (json.count !== undefined) {
+              newCount = json.count;
+              localStorage.setItem(KEY, String(newCount));
+              setCount(newCount);
+            }
+            if (json.delta) {
+              fullText += json.delta;
+              // ストリーミング中もリアルタイムで表示を更新
+              setParsed(parseResult(fullText));
+            }
+          } catch { /* ignore parse errors */ }
+        }
+      }
+      const finalParsed = parseResult(fullText);
+      setParsed(finalParsed);
+      const newItem: HistoryItem = { date: new Date().toLocaleDateString("ja-JP"), industry: industry || "一般", rating, result: fullText };
       const newHistory = [newItem, ...history].slice(0, 10);
       setHistory(newHistory);
       localStorage.setItem(HISTORY_KEY, JSON.stringify(newHistory));
@@ -201,12 +233,15 @@ export default function ReviewTool() {
               <div className="flex flex-wrap gap-2 mb-2">
                 {INDUSTRY_PRESETS.map(p => (
                   <button key={p} type="button" onClick={() => setIndustry(industry === p ? "" : p)}
+                    aria-label={`業種を${p}に設定する`}
+                    aria-pressed={industry === p}
                     className={`px-3 py-1 rounded-full text-xs border font-medium transition-colors ${industry === p ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-600 border-gray-300 hover:border-blue-400"}`}>
                     {p}
                   </button>
                 ))}
               </div>
               <input type="text" value={industry} onChange={e => setIndustry(e.target.value)} placeholder="または直接入力（例: カフェ、整骨院）"
+                aria-label="業種を直接入力する"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
@@ -215,6 +250,8 @@ export default function ReviewTool() {
               <div className="flex gap-2">
                 {["★1", "★2", "★3", "★4", "★5"].map(r => (
                   <button key={r} type="button" onClick={() => setRating(r)}
+                    aria-label={`評価を${r}に設定する`}
+                    aria-pressed={rating === r}
                     className={`flex-1 py-2 rounded-lg border text-sm font-medium transition-colors ${rating === r ? "bg-yellow-400 text-white border-yellow-400" : "bg-white text-gray-700 border-gray-300 hover:border-yellow-300"}`}>
                     {r}
                   </button>
@@ -227,6 +264,8 @@ export default function ReviewTool() {
               <div className="flex gap-2">
                 {TONE_OPTIONS.map(t => (
                   <button key={t.value} type="button" onClick={() => setTone(t.value)}
+                    aria-label={`返信トーンを${t.label}に設定する`}
+                    aria-pressed={tone === t.value}
                     className={`flex-1 py-2 px-1 rounded-lg border text-center transition-colors ${tone === t.value ? "bg-blue-600 text-white border-blue-600" : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"}`}>
                     <div className="text-xs font-semibold">{t.label}</div>
                     <div className={`text-xs mt-0.5 ${tone === t.value ? "text-blue-100" : "text-gray-400"}`}>{t.desc}</div>
@@ -241,11 +280,13 @@ export default function ReviewTool() {
               </label>
               <textarea value={reviewContent} onChange={e => setReviewContent(e.target.value)} rows={5}
                 placeholder="例：料理は美味しかったのですが、待ち時間が長すぎました。スタッフの方は親切でしたが、もう少し効率よく対応してほしいです。"
+                aria-label="返信を生成したいGoogle口コミの内容を入力する"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" required />
               <p className="text-xs text-gray-400 mt-1">口コミ文をそのまま貼り付けてください（{reviewContent.length}/1000文字）</p>
             </div>
 
             <button type="submit" disabled={loading}
+              aria-label={isLimit ? "有料プランに申し込んで返信文を生成する" : "口コミ内容からAIで返信文を生成する"}
               className={`w-full font-medium py-3 rounded-lg text-white transition-colors ${isLimit ? "bg-orange-500 hover:bg-orange-600" : "bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300"}`}>
               {loading ? "返信文を生成中..." : isLimit ? "有料プランに申し込む" : "返信文を生成する（無料）"}
             </button>
@@ -256,17 +297,20 @@ export default function ReviewTool() {
           {/* 出力エリア */}
           <div className="flex flex-col">
             <label className="text-sm font-medium text-gray-700 mb-2">生成結果</label>
-            {loading ? (
-              <div className="flex-1 bg-white border border-gray-200 rounded-xl flex items-center justify-center min-h-[420px]">
+            {loading && !parsed ? (
+              <div className="flex-1 bg-white border border-gray-200 rounded-xl flex items-center justify-center min-h-[420px]" aria-live="polite" aria-label="AIが返信文を生成中です">
                 <div className="text-center">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-3" />
                   <p className="text-sm text-gray-500 font-medium">AIが返信文を作成中...</p>
-                  <p className="text-xs text-gray-400 mt-2">💬 返信文 → 🌟 感謝文 → 📈 SEO → ✏️ 別パターン</p>
-                  <p className="text-xs text-gray-300 mt-1">通常10〜15秒かかります</p>
+                  <p className="text-xs text-gray-400 mt-2">文字が流れるようにリアルタイム表示されます</p>
+                  <p className="text-xs text-gray-300 mt-1">通常5〜10秒かかります</p>
                 </div>
               </div>
             ) : parsed ? (
-              <ResultTabs parsed={parsed} />
+              <div aria-live="polite" aria-label="AIが生成した返信文">
+                <ResultTabs parsed={parsed} />
+                {loading && <p className="text-xs text-blue-500 mt-2 text-center animate-pulse">生成中...</p>}
+              </div>
             ) : (
               <div className="flex-1 bg-white border border-gray-200 rounded-xl flex flex-col items-center justify-center min-h-[420px] text-gray-400 gap-3">
                 <div className="text-4xl">⭐</div>
@@ -287,6 +331,8 @@ export default function ReviewTool() {
         {history.length > 0 && (
           <div className="mt-8 bg-white border border-gray-200 rounded-xl p-4">
             <button onClick={() => setShowHistory(!showHistory)}
+              aria-label={showHistory ? "返信履歴を閉じる" : "返信履歴を表示する"}
+              aria-expanded={showHistory}
               className="flex items-center justify-between w-full text-sm font-medium text-gray-700">
               <span>返信履歴（直近{history.length}件）</span>
               <span className="text-gray-400">{showHistory ? "▲ 閉じる" : "▼ 表示する"}</span>
@@ -301,6 +347,7 @@ export default function ReviewTool() {
                     </div>
                     <pre className="text-xs text-gray-700 whitespace-pre-wrap max-h-24 overflow-y-auto leading-relaxed">{item.result.slice(0, 200)}...</pre>
                     <button onClick={() => { navigator.clipboard.writeText(item.result); }}
+                      aria-label={`${item.industry}/${item.rating}の返信文全文をコピーする`}
                       className="text-xs text-blue-600 mt-2 hover:underline">全文をコピー</button>
                   </div>
                 ))}
