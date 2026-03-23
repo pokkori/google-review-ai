@@ -119,8 +119,17 @@ function ResultTabs({ parsed }: { parsed: ParsedResult }) {
         <pre className="text-sm text-gray-800 whitespace-pre-wrap font-sans leading-relaxed">{section.content}</pre>
       </div>
 
-      <div className="flex gap-2 justify-end">
+      <div className="flex gap-2 justify-end flex-wrap">
         <CopyButton text={parsed.raw} label="全文コピー" />
+        <a
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Google口コミ返信AIで返信文を自動生成しました✨ #Google口コミ返信AI #口コミ返信 https://google-review-ai.vercel.app/tool")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Google口コミ返信AIを使ったことをXにシェアする"
+          className="text-xs px-3 py-1 rounded-lg bg-black hover:bg-gray-800 text-white font-medium transition-colors"
+        >
+          Xでシェア
+        </a>
         <button onClick={handlePrint} aria-label="生成結果を印刷またはPDFとして保存する" className="text-xs px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium">
           印刷・PDF保存
         </button>
