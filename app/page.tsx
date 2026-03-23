@@ -42,7 +42,7 @@ export default function GoogleReviewLP() {
       <nav className="border-b border-gray-100 px-6 py-4 sticky top-0 bg-white/95 backdrop-blur z-10">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <span className="font-bold text-gray-900">Google口コミ返信AI</span>
-          <Link href="/tool" className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700">
+          <Link href="/tool" aria-label="Google口コミ返信AIツールを無料で試す" className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700">
             無料で試す
           </Link>
         </div>
@@ -59,7 +59,7 @@ export default function GoogleReviewLP() {
         <p className="text-lg text-gray-500 mb-4 max-w-2xl mx-auto">
           ネガティブな★1口コミも、ポジティブな★5口コミも。AIが業種・状況に合わせた<strong className="text-gray-700">誠実でSEO効果の高い返信文</strong>を即時生成。放置口コミをゼロにして集客力を高めます。
         </p>
-        <Link href="/tool" className="inline-block bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-100 mb-3">
+        <Link href="/tool" aria-label="Google口コミ返信AIを無料で3回試す" className="inline-block bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-100 mb-3">
           無料で3回試す →
         </Link>
         <p className="text-xs text-gray-400">クレジットカード不要・登録不要</p>
@@ -127,7 +127,7 @@ export default function GoogleReviewLP() {
           <p className="text-center text-gray-500 text-sm mb-10">業種を選ぶだけで、その業界の慣習・表現・トーンを踏まえた返信文が生成されます</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {INDUSTRIES.map(ind => (
-              <div key={ind.name} className="border border-gray-200 rounded-xl p-5">
+              <div key={ind.name} role="article" aria-label={`${ind.name}の口コミ返信サンプルを表示`} className="border border-gray-200 rounded-xl p-5">
                 <div className="text-2xl mb-2">{ind.icon}</div>
                 <h3 className="font-bold text-gray-900 mb-2">{ind.name}</h3>
                 <p className="text-xs text-blue-600 font-medium mb-3">{ind.pain}</p>
@@ -184,7 +184,7 @@ export default function GoogleReviewLP() {
                     </li>
                   ))}
                 </ul>
-                <Link href={plan.href} className={`block w-full text-center text-sm font-medium py-2.5 rounded-lg ${plan.highlight ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
+                <Link href={plan.href} aria-label={`${plan.name}プラン（${plan.price}${plan.sub}）で${plan.cta}`} className={`block w-full text-center text-sm font-medium py-2.5 rounded-lg ${plan.highlight ? "bg-blue-600 text-white hover:bg-blue-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
                   {plan.cta}
                 </Link>
               </div>
@@ -217,16 +217,16 @@ export default function GoogleReviewLP() {
       <section className="bg-blue-600 py-16 text-center px-6">
         <h2 className="text-2xl font-bold text-white mb-3">今すぐ口コミ返信の悩みを解消する</h2>
         <p className="text-blue-100 text-sm mb-8">登録不要・クレジットカード不要で3回無料</p>
-        <Link href="/tool" className="inline-block bg-white text-blue-600 font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-50 shadow-lg">
+        <Link href="/tool" aria-label="Google口コミ返信AIツールで返信文を無料生成する" className="inline-block bg-white text-blue-600 font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-50 shadow-lg">
           無料で返信文を生成する →
         </Link>
         <p className="text-blue-200 text-xs mt-4">※本サービスはAIによる文章生成支援ツールです。生成された返信文は内容をご確認の上ご使用ください。</p>
       </section>
 
       <footer className="border-t py-6 text-center text-xs text-gray-400 space-x-4">
-        <Link href="/legal" className="hover:underline">特定商取引法に基づく表記</Link>
-        <Link href="/privacy" className="hover:underline">プライバシーポリシー</Link>
-        <Link href="/terms" className="hover:underline">利用規約</Link>
+        <Link href="/legal" aria-label="特定商取引法に基づく表記を見る" className="hover:underline">特定商取引法に基づく表記</Link>
+        <Link href="/privacy" aria-label="プライバシーポリシーを見る" className="hover:underline">プライバシーポリシー</Link>
+        <Link href="/terms" aria-label="利用規約を見る" className="hover:underline">利用規約</Link>
       </footer>
     </main>
   );
