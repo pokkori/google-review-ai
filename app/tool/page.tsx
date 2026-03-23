@@ -2,6 +2,7 @@
 import PayjpModal from "@/components/PayjpModal";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { updateStreak, loadStreak, getStreakMilestoneMessage, type StreakData } from "@/lib/streak";
 
 const FREE_LIMIT = 3;
 const KEY = "review_count";
@@ -142,11 +143,14 @@ export default function ReviewTool() {
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [showHistory, setShowHistory] = useState(false);
   const [error, setError] = useState("");
+  const [streak, setStreak] = useState<StreakData | null>(null);
+  const [streakMsg, setStreakMsg] = useState<string | null>(null);
 
   useEffect(() => {
     setCount(parseInt(localStorage.getItem(KEY) || "0"));
     const h = localStorage.getItem(HISTORY_KEY);
     if (h) try { setHistory(JSON.parse(h)); } catch { /* ignore */ }
+    setStreak(loadStreak("google_kuchikomi"));
   }, []);
 
   const isLimit = count >= FREE_LIMIT;
@@ -204,6 +208,7 @@ export default function ReviewTool() {
       const newHistory = [newItem, ...history].slice(0, 10);
       setHistory(newHistory);
       localStorage.setItem(HISTORY_KEY, JSON.stringify(newHistory));
+      const s = updateStreak("google_kuchikomi"); setStreak(s); const msg = getStreakMilestoneMessage(s.count); if (msg) setStreakMsg(msg);
       if (newCount >= FREE_LIMIT) setTimeout(() => setShowPaywall(true), 1500);
     } catch { setError("通信エラーが発生しました。インターネット接続を確認してください。"); }
     finally { setLoading(false); }
@@ -227,6 +232,8 @@ export default function ReviewTool() {
           {/* 入力フォーム */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <h1 className="text-xl font-bold text-gray-900">口コミ情報を入力</h1>
+            {streak && streak.count > 0 && <div className="mt-2 inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-full px-3 py-1 text-sm"><span>{streak.count}日連続利用中</span></div>}
+            {streakMsg && <div className="mt-2 ml-2 inline-flex items-center gap-2 bg-yellow-50 border border-yellow-300 rounded-full px-3 py-1 text-sm text-yellow-700">{streakMsg}</div>}
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">業種</label>
