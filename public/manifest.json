@@ -1,0 +1,24 @@
+{
+  "name": "Google口コミ返信AI",
+  "short_name": "口コミ返信AI",
+  "description": "Google口コミにAIが最適な返信文を自動生成。低評価・高評価・中評価に対応。飲食・美容・クリニック・ホテルなど業種別対応。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4285f4",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

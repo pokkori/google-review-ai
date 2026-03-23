@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     images: [`${SITE_URL}/og-image.png`],
   },
   metadataBase: new URL(SITE_URL),
+  manifest: "/manifest.json",
 };
 
 const breadcrumbLd = {
