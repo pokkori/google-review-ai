@@ -12,21 +12,21 @@ const PROBLEMS = [
 
 const USECASES = [
   {
-    icon: "🍽",
+    icon: "",
     title: "飲食チェーン店",
     problem: "異物混入・食中毒の疑い・接客クレームが頻発。SNS拡散リスクが高い。",
     solution: "深刻度「重大」設定で法的リスクを考慮した対応文を即生成。初動30分の対応を標準化。",
     result: "クレーム対応時間を平均1時間 → 5分に短縮",
   },
   {
-    icon: "📦",
+    icon: "",
     title: "EC・通販企業",
     problem: "配送トラブル・返品返金クレームのメール対応に毎日2〜3時間。CSスタッフの離職も。",
     solution: "注文番号・商品名を入れるだけで完全なメール文が生成。コピペして送信するだけ。",
     result: "CS一人あたりの対応件数が2.5倍に向上",
   },
   {
-    icon: "🏨",
+    icon: "",
     title: "ホテル・旅館",
     problem: "OTAレビューへの悪影響が予約数に直結。深夜のクレームでも即対応が必要。",
     solution: "電話スクリプトで深夜フロントでも迷わず対応。翌日のメールフォローも自動生成。",
@@ -69,21 +69,21 @@ const ONBOARDING_STEPS = [
     day: "今日",
     title: "申し込む（5分）",
     desc: "クレジットカードで即時決済。フォーム入力はメールアドレスのみ。",
-    icon: "📝",
+    icon: "",
     color: "bg-blue-600",
   },
   {
     day: "明日",
     title: "すぐに使える",
     desc: "登録完了メールが届いたら即ログイン可能。スタッフへの共有も当日中に完了。",
-    icon: "🚀",
+    icon: "",
     color: "bg-green-500",
   },
   {
     day: "1週間後",
     title: "効果を実感",
     desc: "クレーム対応時間が激減し、スタッフのストレスが軽減。対応品質が均一化される。",
-    icon: "📈",
+    icon: "",
     color: "bg-purple-500",
   },
 ];
@@ -239,7 +239,7 @@ export default function BusinessLP() {
 
       {/* カスハラ法制化バナー */}
       <div className="bg-amber-50 border-b border-amber-200 px-6 py-3 text-center text-sm text-amber-800">
-        <span className="font-bold">📢 2025年4月施行</span>：カスタマーハラスメント対策法により、企業のクレーム対応マニュアル整備が義務化。
+        <span className="font-bold"> 2025年4月施行</span>：カスタマーハラスメント対策法により、企業のクレーム対応マニュアル整備が義務化。
         <span className="font-bold ml-1">今すぐAIで対応品質を標準化しましょう。</span>
       </div>
 
@@ -333,7 +333,7 @@ export default function BusinessLP() {
             {PROBLEMS.map(p => (
               <div key={p.title} className="bg-white rounded-xl p-5 border border-gray-100">
                 <p className="font-semibold text-gray-900 mb-2 flex items-start gap-2">
-                  <span className="text-red-500 shrink-0 mt-0.5">✗</span>{p.title}
+                  <span className="text-red-500 shrink-0 mt-0.5"></span>{p.title}
                 </p>
                 <p className="text-sm text-gray-500 flex items-start gap-2">
                   <span className="text-green-500 shrink-0 mt-0.5">→</span>{p.desc}
@@ -394,7 +394,7 @@ export default function BusinessLP() {
                 <ul className="space-y-2 mb-6 flex-1">
                   {plan.features.map(f => (
                     <li key={f} className="text-sm text-gray-600 flex items-start gap-2">
-                      <span className="text-green-500 shrink-0">✓</span>{f}
+                      <span className="text-green-500 shrink-0"></span>{f}
                     </li>
                   ))}
                 </ul>

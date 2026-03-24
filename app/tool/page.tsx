@@ -21,10 +21,10 @@ type HistoryItem = { date: string; industry: string; rating: string; result: str
 
 function parseResult(text: string): ParsedResult {
   const sectionDefs = [
-    { key: "返信文", icon: "💬" },
-    { key: "感謝文", icon: "🌟" },
-    { key: "SEOアドバイス", icon: "📈" },
-    { key: "別パターン", icon: "✏️" },
+    { key: "返信文", icon: "" },
+    { key: "感謝文", icon: "" },
+    { key: "SEOアドバイス", icon: "" },
+    { key: "別パターン", icon: "️" },
   ];
   const sections: Section[] = [];
   const parts = text.split(/^---$/m);
@@ -38,7 +38,7 @@ function parseResult(text: string): ParsedResult {
     }
   }
   if (sections.length === 0) {
-    sections.push({ title: "生成結果", icon: "💬", content: text });
+    sections.push({ title: "生成結果", icon: "", content: text });
   }
   return { sections, raw: text };
 }
@@ -52,10 +52,10 @@ function Paywall({ onClose, onCheckout }: { onClose: () => void; onCheckout?: (p
         <h2 className="text-lg font-bold mb-2">無料枠を使い切りました</h2>
         <p className="text-sm text-gray-500 mb-1">口コミ返信を無制限に自動生成</p>
         <ul className="text-xs text-gray-400 text-left mb-5 space-y-1 mt-3">
-          <li>✓ Google口コミ返信を無制限生成</li>
-          <li>✓ SEO最適化アドバイス付き</li>
-          <li>✓ 複数パターンから最適文を選択</li>
-          <li>✓ 返信履歴を無制限保存</li>
+          <li> Google口コミ返信を無制限生成</li>
+          <li> SEO最適化アドバイス付き</li>
+          <li> 複数パターンから最適文を選択</li>
+          <li> 返信履歴を無制限保存</li>
         </ul>
         <div className="space-y-3 mb-4">
           <button onClick={() => { onClose(); onCheckout?.("standard"); }} aria-label="スタンダードプラン月2,980円に申し込む" className="block w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700">
@@ -80,7 +80,7 @@ function CopyButton({ text, label = "コピー" }: { text: string; label?: strin
   };
   return (
     <button onClick={handleCopy} aria-label={`${label}をクリップボードにコピーする`} className="text-xs px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium transition-colors">
-      {copied ? "コピー済み ✓" : label}
+      {copied ? "コピー済み " : label}
     </button>
   );
 }
@@ -122,7 +122,7 @@ function ResultTabs({ parsed }: { parsed: ParsedResult }) {
       <div className="flex gap-2 justify-end flex-wrap">
         <CopyButton text={parsed.raw} label="全文コピー" />
         <a
-          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Google口コミ返信AIで返信文を自動生成しました✨ #Google口コミ返信AI #口コミ返信 https://google-review-ai.vercel.app/tool")}`}
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Google口コミ返信AIで返信文を自動生成しました #Google口コミ返信AI #口コミ返信 https://google-review-ai.vercel.app/tool")}`}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Google口コミ返信AIを使ったことをXにシェアする"
@@ -140,7 +140,7 @@ function ResultTabs({ parsed }: { parsed: ParsedResult }) {
 
 export default function ReviewTool() {
   const [industry, setIndustry] = useState("");
-  const [rating, setRating] = useState("★3");
+  const [rating, setRating] = useState("3");
   const [reviewContent, setReviewContent] = useState("");
   const [tone, setTone] = useState("丁寧");
   const [parsed, setParsed] = useState<ParsedResult | null>(null);
@@ -264,7 +264,7 @@ export default function ReviewTool() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">評価（星）</label>
               <div className="flex gap-2">
-                {["★1", "★2", "★3", "★4", "★5"].map(r => (
+                {["1", "2", "3", "4", "5"].map(r => (
                   <button key={r} type="button" onClick={() => setRating(r)}
                     aria-label={`評価を${r}に設定する`}
                     aria-pressed={rating === r}
@@ -333,10 +333,10 @@ export default function ReviewTool() {
                 <p className="text-sm text-center font-medium text-gray-500">口コミ内容を入力して<br />生成ボタンを押してください</p>
                 <div className="bg-gray-50 rounded-lg p-4 text-xs space-y-2 w-full max-w-[260px]">
                   <p className="font-semibold text-gray-600">生成される内容：</p>
-                  <p className="text-gray-500">💬 返信文（そのままコピペ可）</p>
-                  <p className="text-gray-500">🌟 感謝文（高評価口コミ向け）</p>
-                  <p className="text-gray-500">📈 SEOアドバイス（検索露出アップ）</p>
-                  <p className="text-gray-500">✏️ 別パターン（2〜3パターン）</p>
+                  <p className="text-gray-500"> 返信文（そのままコピペ可）</p>
+                  <p className="text-gray-500"> 感謝文（高評価口コミ向け）</p>
+                  <p className="text-gray-500"> SEOアドバイス（検索露出アップ）</p>
+                  <p className="text-gray-500">️ 別パターン（2〜3パターン）</p>
                 </div>
               </div>
             )}

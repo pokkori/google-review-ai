@@ -3,35 +3,35 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Google口コミ返信AI｜ネガティブ口コミに30秒でプロの返信文を自動生成",
-  description: "Googleマップの口コミに悩む店舗・企業向け。★1〜2のネガティブ口コミも、AIが業種に合わせた誠実な返信文を即時生成。SEO効果もアップ。飲食・美容・クリニック・不動産・ホテル全業種対応。無料3回試せます。",
+  description: "Googleマップの口コミに悩む店舗・企業向け。1〜2のネガティブ口コミも、AIが業種に合わせた誠実な返信文を即時生成。SEO効果もアップ。飲食・美容・クリニック・不動産・ホテル全業種対応。無料3回試せます。",
   keywords: "Google口コミ 返信,Googleマップ 口コミ 対応,ネガティブ口コミ 返信文,Googleビジネスプロフィール 返信,口コミ返信 テンプレート",
 };
 
 const INDUSTRIES = [
-  { icon: "🍽", name: "飲食店", examples: ["料理・味への苦情", "待ち時間・混雑クレーム", "接客態度への不満"], pain: "★1口コミは集客に直結。早期返信でSEO改善。" },
-  { icon: "💇", name: "美容・サロン", examples: ["仕上がりへの不満", "予約・待ち時間", "スタッフ対応への苦情"], pain: "リピーター離脱を防ぐ誠実な返信が必須。" },
-  { icon: "🏥", name: "クリニック・医院", examples: ["待ち時間の長さ", "説明不足・対応の冷たさ", "料金への疑問"], pain: "医療機関は信頼性が命。慎重かつ誠実な返信を。" },
-  { icon: "🏨", name: "ホテル・旅館", examples: ["設備・清潔感への不満", "スタッフ対応", "料金対比への不満"], pain: "OTA評価と連動。迅速な返信で次の予約を守る。" },
-  { icon: "🏠", name: "不動産・住宅", examples: ["対応の遅さ・不親切", "物件説明との差異", "アフターサービス不満"], pain: "高額取引の信頼感を返信で取り戻す。" },
-  { icon: "🛒", name: "小売・EC", examples: ["商品品質への不満", "配送・梱包トラブル", "スタッフ態度"], pain: "口コミ返信がそのまま新規顧客への告知になる。" },
+  { icon: "", name: "飲食店", examples: ["料理・味への苦情", "待ち時間・混雑クレーム", "接客態度への不満"], pain: "1口コミは集客に直結。早期返信でSEO改善。" },
+  { icon: "", name: "美容・サロン", examples: ["仕上がりへの不満", "予約・待ち時間", "スタッフ対応への苦情"], pain: "リピーター離脱を防ぐ誠実な返信が必須。" },
+  { icon: "", name: "クリニック・医院", examples: ["待ち時間の長さ", "説明不足・対応の冷たさ", "料金への疑問"], pain: "医療機関は信頼性が命。慎重かつ誠実な返信を。" },
+  { icon: "", name: "ホテル・旅館", examples: ["設備・清潔感への不満", "スタッフ対応", "料金対比への不満"], pain: "OTA評価と連動。迅速な返信で次の予約を守る。" },
+  { icon: "", name: "不動産・住宅", examples: ["対応の遅さ・不親切", "物件説明との差異", "アフターサービス不満"], pain: "高額取引の信頼感を返信で取り戻す。" },
+  { icon: "", name: "小売・EC", examples: ["商品品質への不満", "配送・梱包トラブル", "スタッフ態度"], pain: "口コミ返信がそのまま新規顧客への告知になる。" },
 ];
 
 const FEATURES = [
-  { icon: "💬", title: "ネガティブ口コミ返信文", desc: "★1〜2の厳しい口コミにも、誠実さと毅然さを両立した返信文を生成。謝罪の過不足なく、次回来店を促す一文まで自動で追加。" },
-  { icon: "⭐", title: "ポジティブ口コミへの感謝文", desc: "★4〜5の良い口コミにも、定型文でない個性的な感謝返信を生成。読んだ人が「良いお店だ」と感じる温かみのある文体で。" },
-  { icon: "📈", title: "SEO最適化アドバイス", desc: "Googleのアルゴリズムに有効なキーワードを自然に盛り込んだ返信文を生成。返信すること自体が検索順位改善につながります。" },
-  { icon: "🔄", title: "返信パターン複数生成", desc: "同じ内容でトーンを変えた返信案を複数生成。丁寧・カジュアル・毅然の中から状況に合わせて選択可能。" },
+  { icon: "", title: "ネガティブ口コミ返信文", desc: "1〜2の厳しい口コミにも、誠実さと毅然さを両立した返信文を生成。謝罪の過不足なく、次回来店を促す一文まで自動で追加。" },
+  { icon: "⭐", title: "ポジティブ口コミへの感謝文", desc: "4〜5の良い口コミにも、定型文でない個性的な感謝返信を生成。読んだ人が「良いお店だ」と感じる温かみのある文体で。" },
+  { icon: "", title: "SEO最適化アドバイス", desc: "Googleのアルゴリズムに有効なキーワードを自然に盛り込んだ返信文を生成。返信すること自体が検索順位改善につながります。" },
+  { icon: "", title: "返信パターン複数生成", desc: "同じ内容でトーンを変えた返信案を複数生成。丁寧・カジュアル・毅然の中から状況に合わせて選択可能。" },
 ];
 
 const HOW_TO = [
-  { step: "1", title: "業種と評価を選択", desc: "業種をタップし、口コミの★数を選ぶだけ。" },
+  { step: "1", title: "業種と評価を選択", desc: "業種をタップし、口コミの数を選ぶだけ。" },
   { step: "2", title: "口コミ本文を貼り付け", desc: "Googleマップから口コミをコピーして貼り付け。" },
   { step: "3", title: "返信文を即時生成", desc: "AIが30秒でプロの返信文を自動生成します。" },
   { step: "4", title: "コピーしてGoogleに貼り付け", desc: "1クリックでコピーし、Googleビジネスプロフィールに投稿。" },
 ];
 
 const VOICES = [
-  { role: "飲食店オーナー・40代", text: "★1の口コミが来るたびに何時間も悩んでいました。このツールで30秒で返信できるようになり、口コミ評価も4.1→4.4に上がりました。" },
+  { role: "飲食店オーナー・40代", text: "1の口コミが来るたびに何時間も悩んでいました。このツールで30秒で返信できるようになり、口コミ評価も4.1→4.4に上がりました。" },
   { role: "美容院院長・30代", text: "ネガティブな口コミへの返信が怖くて放置していましたが、このツールの返信文は誠実で適切。安心して使えています。" },
   { role: "整骨院経営者・50代", text: "医療関係の口コミ返信は言葉一つで問題になりかねない。AIが適切な表現を選んでくれるので助かっています。" },
 ];
@@ -57,7 +57,7 @@ export default function GoogleReviewLP() {
           Google口コミへの返信文を<br /><span className="text-blue-600">30秒</span>で自動生成
         </h1>
         <p className="text-lg text-gray-500 mb-4 max-w-2xl mx-auto">
-          ネガティブな★1口コミも、ポジティブな★5口コミも。AIが業種・状況に合わせた<strong className="text-gray-700">誠実でSEO効果の高い返信文</strong>を即時生成。放置口コミをゼロにして集客力を高めます。
+          ネガティブな1口コミも、ポジティブな5口コミも。AIが業種・状況に合わせた<strong className="text-gray-700">誠実でSEO効果の高い返信文</strong>を即時生成。放置口コミをゼロにして集客力を高めます。
         </p>
         <Link href="/tool" aria-label="Google口コミ返信AIを無料で3回試す" className="inline-block bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-100 mb-3">
           無料で3回試す →
@@ -79,7 +79,7 @@ export default function GoogleReviewLP() {
               "Googleの口コミ評価が下がり集客に悪影響が出ている",
             ].map(p => (
               <div key={p} className="flex gap-3 bg-white rounded-xl p-4 border border-gray-200">
-                <span className="text-red-500 text-lg shrink-0">✗</span>
+                <span className="text-red-500 text-lg shrink-0"></span>
                 <p className="text-sm text-gray-700">{p}</p>
               </div>
             ))}
@@ -151,7 +151,7 @@ export default function GoogleReviewLP() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {VOICES.map((v, i) => (
               <div key={i} className="bg-white rounded-xl p-5 border border-gray-200">
-                <div className="flex text-yellow-400 text-sm mb-3">{"★★★★★"}</div>
+                <div className="flex text-yellow-400 text-sm mb-3">{""}</div>
                 <p className="text-sm text-gray-700 mb-3 leading-relaxed">{v.text}</p>
                 <p className="text-xs text-gray-400">{v.role}</p>
               </div>
@@ -180,7 +180,7 @@ export default function GoogleReviewLP() {
                 <ul className="mt-4 mb-5 space-y-2">
                   {plan.features.map(f => (
                     <li key={f} className="text-sm text-gray-600 flex items-center gap-2">
-                      <span className="text-green-500">✓</span>{f}
+                      <span className="text-green-500"></span>{f}
                     </li>
                   ))}
                 </ul>

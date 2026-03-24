@@ -27,7 +27,7 @@ export default function ContactPage() {
     return (
       <main className="min-h-screen bg-white flex items-center justify-center px-6">
         <div className="text-center max-w-md">
-          <div className="text-5xl mb-4">✅</div>
+          <div className="text-5xl mb-4"></div>
           <h1 className="text-2xl font-bold text-gray-900 mb-3">お問い合わせを受け付けました</h1>
           <p className="text-gray-500 mb-6">1〜2営業日以内にご連絡いたします。<br />お急ぎの場合はご連絡ください。</p>
           <Link href="/" className="text-blue-600 text-sm hover:underline">トップページへ戻る</Link>
@@ -53,7 +53,7 @@ export default function ContactPage() {
         </div>
 
         <div className="bg-blue-50 rounded-xl p-4 mb-8 flex gap-3">
-          <span className="text-blue-500 text-lg shrink-0">💡</span>
+          <span className="text-blue-500 text-lg shrink-0"></span>
           <p className="text-sm text-blue-700">ビジネスプラン（¥9,800/月）は14日間の返金保証付き。まずは無料3回お試しいただくことも可能です。</p>
         </div>
 

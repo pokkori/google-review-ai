@@ -20,7 +20,7 @@ export default function Image() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ fontSize: 72, marginBottom: 12 }}>🛡️</div>
+        <div style={{ fontSize: 72, marginBottom: 12 }}>️</div>
         <div style={{ fontSize: 52, fontWeight: 700, color: "#38bdf8", marginBottom: 12, textAlign: "center" }}>
           AIクレーム対応文ジェネレーター
         </div>
