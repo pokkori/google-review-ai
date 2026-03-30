@@ -67,6 +67,35 @@ const glassCard = {
 
 export default function GoogleReviewLP() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              { '@type': 'Question', name: '生成された返信文はそのまま使えますか？', acceptedAnswer: { '@type': 'Answer', text: 'はい。店名・担当者名などの固有情報を差し替えるだけで、そのままGoogleビジネスプロフィールに投稿できます。' } },
+              { '@type': 'Question', name: '事実と異なる口コミへの返信もできますか？', acceptedAnswer: { '@type': 'Answer', text: 'はい。「事実と異なる点を丁寧に訂正する」モードで生成できます。感情的にならず、事実のみを述べた毅然とした返信文を作成します。' } },
+              { '@type': 'Question', name: '返信することでSEOはどう変わりますか？', acceptedAnswer: { '@type': 'Answer', text: 'Googleは口コミへの返信を評価します。返信率が高い店舗は地図検索の表示順位が改善される傾向があります。AIが自然なキーワードを含む返信文を生成します。' } },
+              { '@type': 'Question', name: '解約はいつでもできますか？', acceptedAnswer: { '@type': 'Answer', text: 'はい。いつでも解約可能です。解約後は次の更新日まで利用できます。' } },
+            ],
+          }).replace(/</g, '\\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: 'Google口コミ返信AI',
+            operatingSystem: 'Web',
+            applicationCategory: 'BusinessApplication',
+            offers: { '@type': 'Offer', price: 0, priceCurrency: 'JPY' },
+          }).replace(/</g, '\\u003c'),
+        }}
+      />
     <main
       className="min-h-screen text-white"
       style={{
@@ -368,8 +397,13 @@ export default function GoogleReviewLP() {
         <Link href="/privacy" aria-label="プライバシーポリシーを見る" className="hover:underline hover:text-slate-300 transition-colors">プライバシーポリシー</Link>
         <Link href="/terms" aria-label="利用規約を見る" className="hover:underline hover:text-slate-300 transition-colors">利用規約</Link>
         <Link href="/cancel" aria-label="解約・退会ページを見る" className="hover:underline hover:text-slate-300 transition-colors">解約・退会</Link>
+        <div className="flex items-center justify-center gap-2 text-xs text-slate-500 mt-4">
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          SSL暗号化通信 | データは安全に保護されています
+        </div>
       </footer>
       <AdBanner slot="" />
     </main>
+    </>
   );
 }
