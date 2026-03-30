@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ShareButtons } from "@/components/ShareButtons";
 import { AdBanner } from "@/components/AdBanner";
+import { StreakBanner } from "@/components/StreakBanner";
+import { UsageCounter } from "@/components/UsageCounter";
 
 export const metadata: Metadata = {
   title: "Google口コミ返信AI｜ネガティブ口コミに30秒でプロの返信文を自動生成",
@@ -128,6 +130,8 @@ export default function GoogleReviewLP() {
         </div>
       </nav>
 
+      <StreakBanner />
+
       {/* Hero */}
       <section className="max-w-4xl mx-auto px-6 py-20 text-center">
         <div
@@ -152,6 +156,7 @@ export default function GoogleReviewLP() {
         <p className="text-lg text-slate-400 mb-4 max-w-2xl mx-auto">
           ネガティブな1口コミも、ポジティブな5口コミも。AIが業種・状況に合わせた<strong className="text-white">誠実でSEO効果の高い返信文</strong>を即時生成。放置口コミをゼロにして集客力を高めます。
         </p>
+        <div className="max-w-xs mx-auto mb-4"><UsageCounter /></div>
         <Link
           href="/tool"
           aria-label="Google口コミ返信AIを無料で3回試す"

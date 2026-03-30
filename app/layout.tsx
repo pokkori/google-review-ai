@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAdScript } from "@/components/GoogleAdScript";
 import "./globals.css";
+import { InstallPrompt } from "@/components/InstallPrompt";
 
 
 const SITE_URL = "https://google-review-ai.vercel.app";
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className="antialiased">
         {children}
+        <InstallPrompt />
         <Analytics />
         <GoogleAdScript />
       </body>
