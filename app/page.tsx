@@ -5,6 +5,7 @@ import { ShareButtons } from "@/components/ShareButtons";
 import { AdBanner } from "@/components/AdBanner";
 import { StreakBanner } from "@/components/StreakBanner";
 import { UsageCounter } from "@/components/UsageCounter";
+import { CrossSell } from "@/components/CrossSell";
 
 export const metadata: Metadata = {
   title: "Google口コミ返信AI｜ネガティブ口コミに30秒でプロの返信文を自動生成",
@@ -167,9 +168,10 @@ export default function GoogleReviewLP() {
             color: "#fff",
           }}
         >
-          無料で3回試す
+          無料でAI返信文を生成
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="inline ml-2 -mt-0.5" aria-hidden="true"><polyline points="9,18 15,12 9,6"/></svg>
         </Link>
+        <p className="text-xs opacity-60 mt-2">※登録不要・3回まで無料</p>
         <p className="text-xs text-slate-500">クレジットカード不要・登録不要</p>
       </section>
 
@@ -393,6 +395,8 @@ export default function GoogleReviewLP() {
         <p className="text-slate-400 text-sm mb-4">Google口コミ返信AIを友達にシェア</p>
         <ShareButtons url="https://google-review-ai.vercel.app" text="Google口コミ返信AIを使ってみた！" hashtags="Google口コミ返信AI" />
       </section>
+
+      <CrossSell currentService="Google口コミ返信AI" />
 
       <footer
         className="py-6 text-center text-xs text-slate-500 space-x-4"
