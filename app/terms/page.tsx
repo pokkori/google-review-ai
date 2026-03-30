@@ -2,21 +2,21 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "利用規約｜AIクレーム対応文",
+  title: "利用規約｜Google口コミ返信AI",
 };
 
 export default function TermsPage() {
   return (
     <div className="min-h-screen bg-white">
       <nav className="bg-white border-b px-6 py-4">
-        <Link href="/" className="font-bold text-gray-900">AIクレーム対応文</Link>
+        <Link href="/" className="font-bold text-gray-900">Google口コミ返信AI</Link>
       </nav>
       <div className="max-w-2xl mx-auto px-6 py-12 text-sm text-gray-700 leading-relaxed space-y-6">
         <h1 className="text-2xl font-bold text-gray-900">利用規約</h1>
 
         <section>
           <h2 className="font-bold text-base mb-2">第1条（適用）</h2>
-          <p>本利用規約（以下「本規約」）は、levonadesign（以下「当社」）が提供するAIクレーム対応文サービス（以下「本サービス」）の利用に関する条件を定めるものです。ユーザーは本規約に同意の上、本サービスをご利用ください。</p>
+          <p>本利用規約（以下「本規約」）は、levonadesign（以下「当社」）が提供するGoogle口コミ返信AIサービス（以下「本サービス」）の利用に関する条件を定めるものです。ユーザーは本規約に同意の上、本サービスをご利用ください。</p>
         </section>
 
         <section>

@@ -229,7 +229,7 @@ export default function BusinessLP() {
     <main className="min-h-screen bg-white">
       <nav className="border-b border-gray-100 px-6 py-4 sticky top-0 bg-white/95 backdrop-blur z-10">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <span className="font-bold text-gray-900">AIクレーム対応文 <span className="text-blue-600 text-sm font-medium ml-2">法人向け</span></span>
+          <span className="font-bold text-gray-900">Google口コミ返信AI <span className="text-blue-600 text-sm font-medium ml-2">法人向け</span></span>
           <div className="flex gap-3">
             <Link href="/" aria-label="個人向けGoogle口コミ返信AIトップページへ" className="text-sm text-gray-500 hover:text-gray-700">個人向けはこちら</Link>
             <Link href="/tool" aria-label="Google口コミ返信AIツールを無料で試す" className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700">無料で試す</Link>

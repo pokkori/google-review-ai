@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー｜AIクレーム対応文ジェネレーター",
+  title: "プライバシーポリシー｜Google口コミ返信AI",
 };
 
 export default function PrivacyPage() {
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
         <section className="space-y-8 text-sm text-gray-700 leading-relaxed">
           <div>
             <h2 className="font-bold text-gray-900 mb-2">1. 事業者情報</h2>
-            <p>本サービス「AIクレーム対応文ジェネレーター」（以下「本サービス」）は、個人が運営するWebサービスです。</p>
+            <p>本サービス「Google口コミ返信AI」（以下「本サービス」）は、個人が運営するWebサービスです。</p>
           </div>
 
           <div>

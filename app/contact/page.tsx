@@ -40,7 +40,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-gray-50">
       <nav className="border-b border-gray-100 px-6 py-4 bg-white">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <Link href="/business" className="font-bold text-gray-900 text-sm">AIクレーム対応文 <span className="text-blue-600">法人向け</span></Link>
+          <Link href="/business" className="font-bold text-gray-900 text-sm">Google口コミ返信AI <span className="text-blue-600">法人向け</span></Link>
           <Link href="/tool" className="text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">無料で試す</Link>
         </div>
       </nav>

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "AIクレーム対応文ジェネレーター｜30秒でプロ品質の対応文を自動生成";
+export const alt = "Google口コミ返信AI｜30秒でプロ品質の返信文を自動生成";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -22,7 +22,7 @@ export default function Image() {
       >
         <div style={{ fontSize: 72, marginBottom: 12 }}>️</div>
         <div style={{ fontSize: 52, fontWeight: 700, color: "#38bdf8", marginBottom: 12, textAlign: "center" }}>
-          AIクレーム対応文ジェネレーター
+          Google口コミ返信AI
         </div>
         <div style={{ fontSize: 26, color: "#e2e8f0", textAlign: "center", maxWidth: 900, lineHeight: 1.5 }}>
           業種・状況・深刻度を入力するだけで
