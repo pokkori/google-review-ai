@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ShareButtons } from "@/components/ShareButtons";
+import { AdBanner } from "@/components/AdBanner";
 
 export const metadata: Metadata = {
   title: "Google口コミ返信AI｜ネガティブ口コミに30秒でプロの返信文を自動生成",
@@ -352,6 +354,12 @@ export default function GoogleReviewLP() {
         </div>
       </section>
 
+      {/* シェアセクション */}
+      <section className="py-8 px-4 text-center">
+        <p className="text-slate-400 text-sm mb-4">Google口コミ返信AIを友達にシェア</p>
+        <ShareButtons url="https://google-review-ai.vercel.app" text="Google口コミ返信AIを使ってみた！" hashtags="Google口コミ返信AI" />
+      </section>
+
       <footer
         className="py-6 text-center text-xs text-slate-500 space-x-4"
         style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
@@ -359,7 +367,9 @@ export default function GoogleReviewLP() {
         <Link href="/legal" aria-label="特定商取引法に基づく表記を見る" className="hover:underline hover:text-slate-300 transition-colors">特定商取引法に基づく表記</Link>
         <Link href="/privacy" aria-label="プライバシーポリシーを見る" className="hover:underline hover:text-slate-300 transition-colors">プライバシーポリシー</Link>
         <Link href="/terms" aria-label="利用規約を見る" className="hover:underline hover:text-slate-300 transition-colors">利用規約</Link>
+        <Link href="/cancel" aria-label="解約・退会ページを見る" className="hover:underline hover:text-slate-300 transition-colors">解約・退会</Link>
       </footer>
+      <AdBanner slot="" />
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { GoogleAdScript } from "@/components/GoogleAdScript";
 import "./globals.css";
 
 
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="antialiased">
         {children}
         <Analytics />
+        <GoogleAdScript />
       </body>
     </html>
   );
