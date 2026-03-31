@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const examples = [
   {
     category: "飲食店",
-    icon: "️",
+    icon: "食",
     cases: [
       {
         situation: "「料理が遅い」と怒鳴り続けるお客様",
@@ -33,7 +33,7 @@ const examples = [
   },
   {
     category: "EC・通販",
-    icon: "",
+    icon: "EC",
     cases: [
       {
         situation: "「すぐ返金しないと訴える」と言うお客様",
@@ -51,7 +51,7 @@ const examples = [
   },
   {
     category: "ホテル・宿泊",
-    icon: "",
+    icon: "宿",
     cases: [
       {
         situation: "「部屋を無料にしろ」と要求するお客様",
@@ -68,31 +68,31 @@ const steps = [
     step: "01",
     title: "録音・記録を残す",
     desc: "電話対応は録音、対面は複数スタッフで対応。「記録のため確認させてください」と伝えるだけで抑止効果あり。",
-    icon: "️",
+    icon: "REC",
   },
   {
     step: "02",
     title: "感情ではなく事実で対応",
     desc: "「何が問題か」「どう対応できるか」を冷静に確認。謝罪の連発は過失を認めることになるため注意。",
-    icon: "",
+    icon: "確認",
   },
   {
     step: "03",
     title: "「できること」と「できないこと」を明確に",
     desc: "規約・法律・会社方針に基づき、対応できる範囲を明示。不当要求には「規定上対応できません」と伝える。",
-    icon: "️",
+    icon: "線引",
   },
   {
     step: "04",
     title: "エスカレーション基準を設ける",
     desc: "暴言・脅迫・長時間拘束が発生したら上長対応または退去要請へ。スタッフ1人に任せない体制を作る。",
-    icon: "",
+    icon: "上長",
   },
   {
     step: "05",
     title: "最終回答を明示して終了",
     desc: "「これが弊社の最終回答です」と伝え、それ以上の対応は困難と明示。第三者機関（消費者センター）を案内。",
-    icon: "",
+    icon: "終了",
   },
 ];
 
@@ -113,7 +113,7 @@ export default function KasuharaGuidePage() {
       <section className="py-16 px-4 text-center bg-gradient-to-b from-gray-900 to-gray-950">
         <div className="max-w-4xl mx-auto">
           <div className="inline-block bg-amber-900 text-amber-300 text-xs font-bold px-3 py-1 rounded-full mb-6">
-             2025年4月施行：カスタマーハラスメント対策法 完全対応
+            2025年4月施行：カスタマーハラスメント対策法 完全対応
           </div>
           <h1 className="text-3xl md:text-5xl font-black mb-6 leading-tight">
             カスタマーハラスメント<br />
@@ -124,10 +124,10 @@ export default function KasuharaGuidePage() {
             AIを使えば個別状況に合わせた対応文を30秒で自動生成できます。
           </p>
           <div className="flex flex-wrap gap-4 justify-center text-sm text-gray-400">
-            <span> 飲食店向け例文</span>
-            <span> EC/通販向け例文</span>
-            <span> ホテル向け例文</span>
-            <span> 5ステップ初期対応手順</span>
+            <span>飲食店向け例文</span>
+            <span>EC/通販向け例文</span>
+            <span>ホテル向け例文</span>
+            <span>5ステップ初期対応手順</span>
           </div>
         </div>
       </section>
@@ -137,7 +137,7 @@ export default function KasuharaGuidePage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-8">カスタマーハラスメント対策法とは</h2>
           <div className="bg-amber-900/30 border border-amber-700 rounded-2xl p-6 mb-8">
-            <p className="text-amber-200 font-bold mb-2">️ 2025年4月施行</p>
+            <p className="text-amber-200 font-bold mb-2">2025年4月施行</p>
             <p className="text-gray-200 leading-relaxed">
               2025年4月より施行された「改正労働施策総合推進法（カスハラ対策法）」により、<strong className="text-white">企業はカスタマーハラスメントから従業員を守る措置を講じる義務</strong>が生じました。
               具体的には「相談窓口の設置」「対応マニュアルの策定」「研修の実施」などが求められます。
@@ -199,16 +199,16 @@ export default function KasuharaGuidePage() {
                     </div>
                     <div className="grid md:grid-cols-2 gap-4 mb-4">
                       <div className="bg-red-900/40 border border-red-700 rounded-xl p-4">
-                        <div className="text-red-400 text-xs font-bold mb-2"> NG対応</div>
+                        <div className="text-red-400 text-xs font-bold mb-2">NG対応</div>
                         <p className="text-gray-300 text-sm">{c.bad}</p>
                       </div>
                       <div className="bg-green-900/40 border border-green-700 rounded-xl p-4">
-                        <div className="text-green-400 text-xs font-bold mb-2"> OK対応（例文）</div>
+                        <div className="text-green-400 text-xs font-bold mb-2">OK対応（例文）</div>
                         <p className="text-gray-200 text-sm whitespace-pre-wrap">{c.good}</p>
                       </div>
                     </div>
                     <div className="bg-blue-900/30 rounded-lg px-4 py-2">
-                      <span className="text-blue-300 text-xs font-bold"> ポイント: </span>
+                      <span className="text-blue-300 text-xs font-bold">ポイント: </span>
                       <span className="text-gray-300 text-xs">{c.point}</span>
                     </div>
                   </div>

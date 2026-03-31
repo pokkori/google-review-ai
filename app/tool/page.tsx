@@ -21,10 +21,10 @@ type HistoryItem = { date: string; industry: string; rating: string; result: str
 
 function parseResult(text: string): ParsedResult {
   const sectionDefs = [
-    { key: "返信文", icon: "" },
-    { key: "感謝文", icon: "" },
-    { key: "SEOアドバイス", icon: "" },
-    { key: "別パターン", icon: "️" },
+    { key: "返信文", icon: "[返信]" },
+    { key: "感謝文", icon: "[感謝]" },
+    { key: "SEOアドバイス", icon: "[SEO]" },
+    { key: "別パターン", icon: "[別]" },
   ];
   const sections: Section[] = [];
   const parts = text.split(/^---$/m);
@@ -329,14 +329,14 @@ export default function ReviewTool() {
               </div>
             ) : (
               <div className="flex-1 bg-white border border-gray-200 rounded-xl flex flex-col items-center justify-center min-h-[420px] text-gray-400 gap-3">
-                <div className="text-4xl">⭐</div>
+                <div className="text-4xl text-yellow-400 font-bold">★</div>
                 <p className="text-sm text-center font-medium text-gray-500">口コミ内容を入力して<br />生成ボタンを押してください</p>
                 <div className="bg-gray-50 rounded-lg p-4 text-xs space-y-2 w-full max-w-[260px]">
                   <p className="font-semibold text-gray-600">生成される内容：</p>
-                  <p className="text-gray-500"> 返信文（そのままコピペ可）</p>
-                  <p className="text-gray-500"> 感謝文（高評価口コミ向け）</p>
-                  <p className="text-gray-500"> SEOアドバイス（検索露出アップ）</p>
-                  <p className="text-gray-500">️ 別パターン（2〜3パターン）</p>
+                  <p className="text-gray-500">返信文（そのままコピペ可）</p>
+                  <p className="text-gray-500">感謝文（高評価口コミ向け）</p>
+                  <p className="text-gray-500">SEOアドバイス（検索露出アップ）</p>
+                  <p className="text-gray-500">別パターン（2〜3パターン）</p>
                 </div>
               </div>
             )}
