@@ -1,64 +1,51 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from 'next/og';
 
-export const runtime = "edge";
-export const alt = "Google口コミ返信AI｜30秒でプロ品質の返信文を自動生成";
+export const runtime = 'edge';
+export const alt = 'Google口コミ返信AI - AIがプロ品質の口コミ返信文を自動生成';
 export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const contentType = 'image/png';
 
 export default function Image() {
   return new ImageResponse(
     (
-      <div
-        style={{
-          background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          fontFamily: "sans-serif",
-        }}
-      >
-        <div style={{ fontSize: 72, fontWeight: 700, color: "#38bdf8", marginBottom: 12 }}>G</div>
-        <div style={{ fontSize: 52, fontWeight: 700, color: "#38bdf8", marginBottom: 12, textAlign: "center" }}>
-          Google口コミ返信AI
-        </div>
-        <div style={{ fontSize: 26, color: "#e2e8f0", textAlign: "center", maxWidth: 900, lineHeight: 1.5 }}>
-          業種・状況・深刻度を入力するだけで
-        </div>
-        <div style={{ fontSize: 26, color: "#e2e8f0", textAlign: "center", maxWidth: 900, marginBottom: 20 }}>
-          メール文＋電話スクリプト＋チェックリストを30秒で自動生成
-        </div>
-        <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
-          {["飲食店", "ECショップ", "ホテル", "小売・美容"].map((label) => (
-            <div
-              key={label}
-              style={{
-                padding: "8px 20px",
-                background: "rgba(56,189,248,0.15)",
-                border: "1px solid rgba(56,189,248,0.4)",
-                borderRadius: 24,
-                fontSize: 18,
-                color: "#7dd3fc",
-              }}
-            >
-              {label}
-            </div>
-          ))}
-        </div>
-        <div
-          style={{
-            marginTop: 32,
-            padding: "12px 36px",
-            background: "#0369a1",
-            borderRadius: 40,
-            fontSize: 22,
-            color: "#fff",
-            fontWeight: 600,
-          }}
-        >
-          無料3回 → ¥4,980/月〜
+      <div style={{
+        width: '100%', height: '100%',
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%)',
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
+        fontFamily: 'sans-serif',
+      }}>
+        <div style={{
+          background: 'rgba(255,255,255,0.08)',
+          border: '1px solid rgba(255,255,255,0.15)',
+          borderRadius: '24px',
+          padding: '48px 64px',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', gap: '24px',
+        }}>
+          <div style={{
+            width: '72px', height: '72px',
+            background: 'linear-gradient(135deg, #4285f4, #34a853)',
+            borderRadius: '50%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+          </div>
+          <div style={{ fontSize: '52px', fontWeight: 900, color: '#ffffff', textAlign: 'center' }}>
+            Google口コミ返信AI
+          </div>
+          <div style={{ fontSize: '26px', color: 'rgba(255,255,255,0.75)', textAlign: 'center' }}>
+            AIがプロ品質の口コミ返信文を自動生成
+          </div>
+          <div style={{
+            background: 'linear-gradient(135deg, #4285f4CC, #34a85399)',
+            borderRadius: '12px', padding: '12px 32px',
+            fontSize: '22px', fontWeight: 700, color: '#ffffff',
+          }}>
+            無料でお試し
+          </div>
         </div>
       </div>
     ),
