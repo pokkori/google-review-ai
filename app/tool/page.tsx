@@ -48,7 +48,7 @@ function Paywall({ onClose, onCheckout }: { onClose: () => void; onCheckout?: (p
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
       <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl text-center relative">
         <button onClick={onClose} aria-label="ペイウォールを閉じる" className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">×</button>
-        <div className="text-3xl mb-3">⭐</div>
+        <div className="text-3xl mb-3" style={{ color: "#FFD700", fontWeight: "bold" }}>★</div>
         <h2 className="text-lg font-bold mb-2">無料枠を使い切りました</h2>
         <p className="text-sm text-gray-500 mb-1">口コミ返信を無制限に自動生成</p>
         <ul className="text-xs text-gray-400 text-left mb-5 space-y-1 mt-3">
@@ -229,7 +229,7 @@ export default function ReviewTool() {
 
       <nav className="bg-white border-b px-6 py-4">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <Link href="/" className="font-bold text-gray-900">⭐ Google口コミ返信AI</Link>
+          <Link href="/" className="font-bold text-gray-900">Google口コミ返信AI</Link>
           <span className={`text-xs px-3 py-1 rounded-full ${isLimit ? "bg-red-100 text-red-600" : "bg-blue-100 text-blue-600"}`}>
             {isLimit ? "無料枠終了" : `無料あと${FREE_LIMIT - count}回`}
           </span>
@@ -303,11 +303,12 @@ export default function ReviewTool() {
 
             <button type="submit" disabled={loading}
               aria-label={isLimit ? "有料プランに申し込んで返信文を生成する" : "口コミ内容からAIで返信文を生成する"}
+              aria-busy={loading}
               className={`w-full font-medium py-3 rounded-lg text-white transition-colors ${isLimit ? "bg-orange-500 hover:bg-orange-600" : "bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300"}`}>
               {loading ? "返信文を生成中..." : isLimit ? "有料プランに申し込む" : "返信文を生成する（無料）"}
             </button>
 
-            {error && <p className="text-sm text-red-500 text-center">{error}</p>}
+            {error && <p role="alert" className="text-sm text-red-500 text-center">{error}</p>}
           </form>
 
           {/* 出力エリア */}

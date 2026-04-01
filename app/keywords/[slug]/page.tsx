@@ -200,7 +200,7 @@ export default async function KeywordPage({ params }: { params: Promise<{ slug: 
       <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0f172a 0%, #14532d 50%, #0f172a 100%)", color: "#e2e8f0", padding: "2rem 1rem" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>⭐</div>
+            <div style={{ fontSize: "3rem", marginBottom: "1rem", color: "#FFD700", fontWeight: "bold" }}>★</div>
             <h1 style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)", fontWeight: "bold", marginBottom: "1rem", background: "linear-gradient(90deg, #4ade80, #22d3ee)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{data.h1}</h1>
             <p style={{ fontSize: "1.1rem", color: "#94a3b8", marginBottom: "2rem" }}>{data.description}</p>
             <Link href="/" style={{ display: "inline-block", background: "linear-gradient(135deg, #4ade80, #22d3ee)", color: "#fff", padding: "1rem 2.5rem", borderRadius: "50px", fontWeight: "bold", fontSize: "1.1rem", textDecoration: "none" }}>今すぐ無料で返信文を作成 →</Link>
