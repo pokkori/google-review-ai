@@ -1,5 +1,6 @@
 "use client";
 import PayjpModal from "@/components/PayjpModal";
+import KomojuButton from "@/components/KomojuButton";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { updateStreak, loadStreak, getStreakMilestoneMessage, type StreakData } from "@/lib/streak";
@@ -58,11 +59,18 @@ function Paywall({ onClose, onCheckout }: { onClose: () => void; onCheckout?: (p
           <li> 返信履歴を無制限保存</li>
         </ul>
         <div className="space-y-3 mb-4">
-          <button onClick={() => { onClose(); onCheckout?.("standard"); }} aria-label="スタンダードプラン月2,980円に申し込む" className="block w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700">
-            スタンダード ¥2,980/月（50件/月）
+          <KomojuButton planId="standard" planLabel="コンビニ・銀行払いで申し込む ¥2,980/月" className="block w-full bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors" />
+          <KomojuButton planId="business" planLabel="コンビニ・銀行払い（ビジネス）¥4,980/月" className="block w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm" />
+          <div className="flex items-center gap-2 my-1">
+            <div className="flex-1 h-px bg-gray-200" />
+            <span className="text-xs text-gray-400">またはクレジットカード</span>
+            <div className="flex-1 h-px bg-gray-200" />
+          </div>
+          <button onClick={() => { onClose(); onCheckout?.("standard"); }} aria-label="スタンダードプラン月2,980円に申し込む（PAY.JP）" className="block w-full bg-gray-100 text-gray-700 py-3 rounded-xl hover:bg-gray-200 text-sm">
+            クレジットカード ¥2,980/月（PAY.JP）
           </button>
-          <button onClick={() => { onClose(); onCheckout?.("business"); }} aria-label="ビジネスプラン月4,980円に申し込む" className="block w-full bg-gray-100 text-gray-700 py-3 rounded-xl hover:bg-gray-200 text-sm">
-            ビジネス ¥4,980/月（無制限）
+          <button onClick={() => { onClose(); onCheckout?.("business"); }} aria-label="ビジネスプラン月4,980円に申し込む（PAY.JP）" className="block w-full bg-gray-100 text-gray-700 py-2 rounded-xl hover:bg-gray-200 text-xs">
+            クレジットカード（ビジネス）¥4,980/月
           </button>
         </div>
         <button onClick={onClose} aria-label="ペイウォールを閉じる" className="text-xs text-gray-400 hover:text-gray-600">閉じる</button>
