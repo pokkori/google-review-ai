@@ -227,7 +227,7 @@ export default function ReviewTool() {
       localStorage.setItem(HISTORY_KEY, JSON.stringify(newHistory));
       const s = updateStreak("google_kuchikomi"); setStreak(s); const msg = getStreakMilestoneMessage(s.count); if (msg) setStreakMsg(msg);
       if (newCount >= FREE_LIMIT) setTimeout(() => setShowPaywall(true), 1500);
-    } catch { setError("通信エラーが発生しました。インターネット接続を確認してください。"); }
+    } catch { setError("少し時間をおいてもう一度お試しください。"); }
     finally { setLoading(false); }
   };
 
